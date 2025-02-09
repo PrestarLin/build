@@ -11,7 +11,15 @@ on:
         - kernel
         - build
         default: build
-
+        
+      armbian_extensions:
+        type: choice
+        description: 'extensions'
+        options:
+        - uefi-edk2-rk3588
+        
+        
+        
       armbian_kernel_branch:
         type: choice
         description: 'Kernel branch'
@@ -321,6 +329,7 @@ jobs:
         with:
           armbian_token:              "${{secrets.GITHUB_TOKEN}}"
           armbian_target:             "${{inputs.armbian_target}}"
+          armbian_extensions:         "${{inputs.armbian_extensions}}"
           armbian_release:            "${{inputs.armbian_release}}"
           armbian_kernel_branch:      "${{inputs.armbian_kernel_branch}}"
           armbian_ui:                 "${{inputs.armbian_ui}}"
